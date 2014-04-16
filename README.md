@@ -1,7 +1,7 @@
-daummovie
+daummovie Plugin for DokuWiki
 =========
 
-Access the Daum movie database for Dokuwiki
+Access the Daum movie database.
 
 You can add a movie information in your wiki.
 
