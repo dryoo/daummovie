@@ -5,6 +5,8 @@ Access the Daum movie database.
 
 You can add a movie information in your wiki.
 
+httP://openwiki.kr/tech/daummovie
+
 syntax:
 -------
 
