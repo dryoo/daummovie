@@ -100,7 +100,7 @@ class syntax_plugin_daummovie extends DokuWiki_Syntax_Plugin {
 			$renderer->doc.= date(DATE_RFC2822);
                 return false;}
 		$renderer->doc.= "<div class=\"daummovie\">";
-		$renderer->doc.= "<img src=\"".$data['thumbnail']."\" alt=\"\" style=\"float:left;margin-right:1em;\">";
+		$renderer->doc.= "<img src=\"".$data['thumbnail']."\" alt=\"\" style=\"margin-right:1em;\">";
         
         
 	/*	$renderer->doc.= "<a href=\"".$data['link']."\" rel=\"nofollow\">".$data['title']." <small>".$data['year']."</small></a><br>";

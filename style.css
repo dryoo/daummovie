@@ -1,2 +1,6 @@
-.dokuwiki #daummovie img {float:left}
+.dokuwiki .daummovie {
 
+img {float:left}
+ul {list-style:none}
+
+}
