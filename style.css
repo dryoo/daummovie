@@ -1,6 +1,8 @@
-.dokuwiki .daummovie {
+div.daummovie {
 
-img {float:left}
+min-height:160px;
+
+img {float:left;margin-right:1em;}
 ul {list-style:none}
 
 }
