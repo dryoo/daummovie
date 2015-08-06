@@ -75,12 +75,12 @@ class syntax_plugin_daummovie extends DokuWiki_Syntax_Plugin {
 		$data['link']		=$movie->title[0]->link;
 		$data['eng_title']	=$movie->eng_title[0]->content;
 		$data['year']		=$movie->year[0]->content;
-		$data['director']	=$movie->director[0]->content;
+		$data['director']	=$this->_join2($movie->director,false);
 		$data['nation']		=$movie->nation[0]->content;
 		$data['grades']		=$movie->grades[0]->content;
-		$data['genre']		=$this->_join($movie->genre,true);
-		$data['actor']		=$this->_join($movie->actor,true); 
-		$data['open_info']	=$this->_join($movie->open_info);
+		$data['genre']		=$this->_join2($movie->genre,false);
+		$data['actor']		=$this->_join2($movie->actor,false); 
+		$data['open_info']	=$this->_join2($movie->open_info);
 		$data['query']		= $match." (".$tries.") ".$response->code;
         return $data;
     }
@@ -103,29 +103,27 @@ class syntax_plugin_daummovie extends DokuWiki_Syntax_Plugin {
 		$renderer->doc.= "<img src=\"".$data['thumbnail']."\" alt=\"\" style=\"margin-right:1em;\">";
         
         
-	/*	$renderer->doc.= "<a href=\"".$data['link']."\" rel=\"nofollow\">".$data['title']." <small>".$data['year']."</small></a><br>";
+		$renderer->doc.= "<a href=\"".$data['link']."\" rel=\"nofollow\">".$data['title']." <small>".$data['year']."</small></a><br>";
 		$renderer->doc.= $data['eng_title']."<br>";
 		$renderer->doc.= "<strong>감독</strong> : ".$data['director']."<br>";
 		$renderer->doc.= "<strong>평점</strong> : ".$data['grades']."<br>";
 		$renderer->doc.= "<strong>정보</strong> : ".$data['nation']." ".$data['open_info']."<br>";
 		$renderer->doc.= "<strong>분류</strong> : ".$data['genre']."<br>";
-		$renderer->doc.= "<strong>출연</strong> : ".$data['actor']."<br></small></div>";  */
+		$renderer->doc.= "<strong>출연</strong> : ".$data['actor']."<br></small></div>";  
         
-        $renderer->doc.= "<a href=\"".$data['link']."\" rel=\"nofollow\">".$data['title']." <small>".$data['year']."</small></a><br><small>";
+     //   $renderer->doc.= "<a href=\"".$data['link']."\" rel=\"nofollow\">".$data['title']." <small>".$data['year']."</small></a><br><small>";
      
-        $wdata.="".$data['eng_title']." \r\n ";
+   /*     $wdata.="".$data['eng_title']." \r\n ";
         $wdata.="     * 감독 : [[".$data['director']."]]  \r\n";
         $wdata.="     * 평점 : ".$data['grades']."  \r\n";
         $wdata.="     * 정보 : [[".$data['nation']."]] ".$data['open_info']." \r\n";
         $wdata.="     * 분류 : ".$data['genre']."  \r\n";
         $wdata.="     * 출연 : ".$data['actor']."  \r\n";
+        $renderer->doc.=p_render('xhtml',p_get_instructions($wdata),$info); */
             
-        
-        $renderer->doc.=p_render('xhtml',p_get_instructions($wdata),$info);
-        
-        
 		$renderer->doc.= "</small></div>"; 
 		//$renderer->doc.= $data['query'];
+
 		return true;
 
 }
@@ -140,6 +138,27 @@ class syntax_plugin_daummovie extends DokuWiki_Syntax_Plugin {
 	  } else
 		  return false;
 	}
+
+    function _join2($xxx,$link=false){
+        if ($xxx)
+        {
+            foreach ($xxx as $val) {
+                if ($link) $out.=" [[".$val->content."]] ";
+                   else {
+                        $_link=explode('|',$val->content);
+
+                       // $out.="<img src='".$_link[1]."' style='max-width:20px' >";
+                        $out.=$_link[0];
+                        if ($_link[2])
+                        $out.="(".$_link[2].")";
+                        $out.=" ";
+                   }
+            }
+          return $out;
+      } else
+          return false;
+    }
+
 
 	function curl($url,$param=false) 
 	{ // http://www.partner114.com/bbs/board.php?bo_table=B07&wr_id=126

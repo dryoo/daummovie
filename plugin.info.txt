@@ -1,7 +1,7 @@
 base   daummovie
 author V_L
 email  dryoo@live.com
-date   2013-10-17
+date   2015-8-6
 name   daummovie plugin
 desc   Display Movie informations
 url    httP://openwiki.kr/tech/daummovie
