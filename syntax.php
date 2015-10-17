@@ -103,7 +103,7 @@ class syntax_plugin_daummovie extends DokuWiki_Syntax_Plugin {
 		$renderer->doc.= "<img src=\"".$data['thumbnail']."\" alt=\"\" style=\"margin-right:1em;Max-width:110px;\">";
         
         
-		$renderer->doc.= "<a href=\"".$data['link']."\" rel=\"nofollow\">".$data['title']." <small>".$data['year']."</small></a><br>";
+		$renderer->doc.= "<a href=\"".$data['link']."\" class=\"urlextern\" rel=\"nofollow\">".$data['title']." <small>".$data['year']."</small></a><br>";
 		$renderer->doc.= $data['eng_title']."<br>";
 		$renderer->doc.= "<strong>감독</strong> : ".$data['director']."<br>";
 		$renderer->doc.= "<strong>평점</strong> : ".$data['grades']."<br>";
