@@ -100,7 +100,7 @@ class syntax_plugin_daummovie extends DokuWiki_Syntax_Plugin {
 			$renderer->doc.= date(DATE_RFC2822);
                 return false;}
 		$renderer->doc.= "<div class=\"daummovie\">";
-		$renderer->doc.= "<img src=\"".$data['thumbnail']."\" alt=\"\" style=\"margin-right:1em;\">";
+		$renderer->doc.= "<img src=\"".$data['thumbnail']."\" alt=\"\" style=\"margin-right:1em;Max-width:110px;\">";
         
         
 		$renderer->doc.= "<a href=\"".$data['link']."\" rel=\"nofollow\">".$data['title']." <small>".$data['year']."</small></a><br>";
@@ -121,7 +121,7 @@ class syntax_plugin_daummovie extends DokuWiki_Syntax_Plugin {
         $wdata.="     * 출연 : ".$data['actor']."  \r\n";
         $renderer->doc.=p_render('xhtml',p_get_instructions($wdata),$info); */
             
-		$renderer->doc.= "</small></div>"; 
+		//$renderer->doc.= "</small></div>"; 
 		//$renderer->doc.= $data['query'];
 
 		return true;
